@@ -7,7 +7,7 @@
 ==============================================-->
 
 <!-- jQuery V3.4.1 -->
-<script src="<?php echo base_url("resources/js/jquery-3.4.1.min.js")?>" ></script>
+
 
 <!-- popper -->
 <script src="<?php echo base_url("resources/js/popper.min.js")?>" ></script>

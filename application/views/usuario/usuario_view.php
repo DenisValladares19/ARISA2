@@ -42,40 +42,22 @@
 
     <table class="table table-bordered" width="100%" cellspacing="0" id="data">
         <thead style="font-weight: bold;">
+        <td>ID</td>
         <td>Username</td>
         <td>Correo</td>
-        <td>Password</td>
+        <td>Profile Picture</td>
         <td>Opciones</td>
         </thead>
 
-        <tbody>
-            <tr>
-                <td>JuanCa123</td>
-                <td>juan.carlos@gmail.com</td>
-                <td>*********</td>
-                <td><button class="btn-success">Modificar</button>
-                <button class="btn-danger">Eliminar</button></td>
-            </tr>
-            <tr>
-                <td>Rocio123</td>
-                <td>rocio.chicas@gmail.com</td>
-                <td>*********</td>
-                <td><button class="btn-success">Modificar</button>
-                <button class="btn-danger">Eliminar</button></td>
-            </tr>
-            <tr>
-                <td>Nelson123</td>
-                <td>nelson.thanus@gmail.com</td>
-                <td>*********</td>
-                <td><button class="btn-success">Modificar</button>
-                <button class="btn-danger">Eliminar</button></td>
-            </tr>
+        <tbody id="table">
+
         </tbody>
 
         <tfoot>
+        <td>ID</td>
         <th>Username</th>
         <th>Correo</th>
-        <th>Password</th>
+        <th>Profile Picture</th>
         <th>Opciones</th>
 
         </tfoot>
@@ -97,7 +79,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="cliente/saveCliente" method="post">
+                <form method="post" id="frmUserId">
 
                     <div class="form-column col-md-12">
 
@@ -115,7 +97,7 @@
 
                         <div class="form-group">
                             <label>E-Mail</label>
-                            <input type="text" name="apellido" id="apellidos" class="form-control"></input>
+                            <input type="text" name="email" id="emailId" class="form-control"></input>
                         </div>
                     </div>
 
@@ -125,7 +107,7 @@
 
                         <div class="form-group">
                             <label>Contraseña</label>
-                            <input type="text" name="direccion" id="direccionI" class="form-control"></input>
+                            <input type="password" name="pass" id="passId" class="form-control"></input>
                         </div>
                     </div>
 
@@ -135,7 +117,10 @@
 
                         <div class="form-group">
                             <label>Rol</label>
-                            <input type="text" name="direccion" id="direccionI" class="form-control"></input>
+                            <select name="rol" id="rolId" class="form-control">
+                            <option disabled="true">Seleccione</option>
+
+                            </select>
                         </div>
                     </div>
 
@@ -146,10 +131,10 @@
 
                         <div class="form-group">
                             <label>Imagen de Perfil</label>
-                            <input type="file" name="telefono" id="telefonoI" class="form-control" onchange="validarFile(this)"></input>
+                            <input type="file" name="imagen" id="imagenId" class="form-control" onchange="validarFile(this)"></input>
                         </div>
                     </div>
-                    <button type="submit" name="btnSave" class="btn btn-primary">Guardar Cliente</button>
+                    <button type="submit" name="btnSaveUser" id="btnSaveUserId" class="btn btn-primary">Guardar Usuario</button>
                 </form>
             </div>
 
@@ -158,7 +143,8 @@
 </div>
 
 <!-- Modal editar -->
-<div class="modal fade" id="frmEditarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="frmEditarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -168,15 +154,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="cliente/updateCliente" method="post">
+                <form method="post" id="frmUserIdEdit">
 
                     <div class="form-column col-md-12">
 
-                        <input type="hidden" name="idCliente" id="idCliente" class="form-control"></input>
+
 
                         <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" name="nombre" id="nombresE" class="form-control"></input>
+                            <label>Nombre de Usuario</label>
+                            <input type="hidden" name="txtId" value="0">
+                            <input type="text" name="nombreE" id="nombresId" class="form-control"></input>
                         </div>
                     </div>
 
@@ -185,8 +172,8 @@
 
 
                         <div class="form-group">
-                            <label>Apellidos</label>
-                            <input type="text" name="apellido" id="apellidosE" class="form-control"></input>
+                            <label>E-Mail</label>
+                            <input type="text" name="emailE" id="emailEId" class="form-control"></input>
                         </div>
                     </div>
 
@@ -195,8 +182,8 @@
 
 
                         <div class="form-group">
-                            <label>Dirección</label>
-                            <input type="text" name="direccion" id="direccionE" class="form-control"></input>
+                            <label>Contraseña</label>
+                            <input type="password" name="passE" id="passEId" class="form-control"></input>
                         </div>
                     </div>
 
@@ -205,21 +192,54 @@
 
 
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" name="email" id="emailE" class="form-control"></input>
+                            <label>Rol</label>
+                            <select name="rolE" id="rolEId" class="form-control">
+                                <option disabled="true">Seleccione</option>
+
+                            </select>
+
                         </div>
                     </div>
+
 
                     <div class="form-column col-md-12">
 
 
 
                         <div class="form-group">
-                            <label>Teléfono</label>
-                            <input type="text" name="telefono" id="telefonoE" class="form-control"></input>
+                            <label>Imagen de Perfil</label>
+                            <input type="file" name="imagenE" id="imagenEId" class="form-control" onchange="validarFile(this)"></input>
                         </div>
                     </div>
-                    <button type="submit" name="btnEditar" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="submit" name="btnEditUser" id="btnEditUserId" class="btn btn-primary">Editar Usuario</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--Modal Delete-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmar Eliminación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="formRol">
+
+
+                    <div class="form-column col-md-12">
+
+                        ¿Eliminar este registro?
+                    </div>
+
+                    <button type="submit" id="btnDeleteId" name="btnDelete" class="btn btn-danger">Eliminar</button>
                 </form>
             </div>
 
