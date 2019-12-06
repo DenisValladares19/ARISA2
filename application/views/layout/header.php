@@ -28,7 +28,9 @@
 
     <!-- jQuery Custom Content Scroller V3.1.5 -->
     <link rel="stylesheet" href="<?php echo base_url("resources/css/jquery.mCustomScrollbar.css")?>">
-
+    <link rel="stylesheet" href="<?php echo base_url("resources/css/jquery-ui.min.css")?>">
+     <link rel="stylesheet" href="<?php echo base_url("resources/css/select2.min.css")?>">
+     <link rel="stylesheet" href="<?php echo base_url("resources/DataTables//datatables.min.css")?>">
     <!-- General Styles -->
     <link rel="stylesheet" href="<?php echo base_url("resources/css/style.css")?>">
 

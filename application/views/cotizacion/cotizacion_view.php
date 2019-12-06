@@ -84,78 +84,46 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="cliente/saveCliente" method="post">
-
-                    <div class="form-column col-md-12">
-
-
-
-                        <div class="form-group">
-                            <label>Nombre de Cliente</label>
-                            <input type="text" name="nombre" id="nombres" class="form-control"></input>
+                <form method="post" id="formModal">
+                    <div class="row">
+                    <div class="form-column col-md-6">
+                       <div class="form-group">
+                           <label>Nombre de Cliente</label>
+                           <select name="cliente" id="clienteI" class="form-control"><option>Seleccionar</option></select>
                         </div>
-                    </div>
-
-                    <div class="form-column col-md-12">
-
-
-
-                        <div class="form-group">
-                            <label>Tipo de Impresión</label>
-                            <input type="text" name="apellido" id="apellidos" class="form-control"></input>
-                        </div>
-                    </div>
-
-                    <div class="form-column col-md-12">
-
-
 
                         <div class="form-group">
                             <label>Fecha</label>
-                            <input type="text" name="direccion" id="direccionI" class="form-control"></input>
+                            <input type="text" name="fecha" id="fechaI" class="form-control"></input>
                         </div>
-                    </div>
-
-                    <div class="form-column col-md-12">
-
-
 
                         <div class="form-group">
-                            <label>Cantidad</label>
-                            <input type="text" name="email" id="emailI" class="form-control"></input>
+                            <br>
+                            <a href="#" name="materiales" id="material" class="btn btn-primary btn-block">Material</a>
                         </div>
                     </div>
 
-                    <div class="form-column col-md-12">
+                    <div class="form-column col-md-6">
 
 
 
-                        <div class="form-group">
-                            <label>Precio</label>
-                            <input type="text" name="email" id="emailI" class="form-control"></input>
+                         <div class="form-group">
+                            <label>Tipo de Impresión</label>
+                            <select name="tipoImpresion" id="tipoI" class="form-control"><option>Seleccionar</option></select>
                         </div>
-                    </div>
-
-                    <div class="form-column col-md-12">
-
-
-
+                   
                         <div class="form-group">
                             <label>Descripción</label>
-                            <input type="text" name="email" id="emailI" class="form-control"></input>
+                            <textarea name="des" id="desI" class="form-control" autocomplete="off"></textarea>
                         </div>
-                    </div>
-
-                    <div class="form-column col-md-12">
-
-
-
+                    
                         <div class="form-group">
                             <label>Estado</label>
-                            <input type="text" name="telefono" id="telefonoI" class="form-control"></input>
+                            <select name="estado" id="estadoI" class="form-control"><option>Seleccionar</option></select>
                         </div>
                     </div>
-                    <button type="submit" name="btnSave" class="btn btn-primary">Guardar Cotización</button>
+                    </div>
+                    <button type="submit" name="btnSave" id="btnGuardar" class="btn btn-primary">Guardar Cotización</button>
                 </form>
             </div>
 
@@ -163,73 +131,59 @@
     </div>
 </div>
 
-<!-- Modal editar -->
-<div class="modal fade" id="frmEditarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="cliente/updateCliente" method="post">
 
-                    <div class="form-column col-md-12">
+<!-- Modal para mostrar el inventario -->
 
-                        <input type="hidden" name="idCliente" id="idCliente" class="form-control"></input>
-
-                        <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" name="nombre" id="nombresE" class="form-control"></input>
-                        </div>
-                    </div>
-
-                    <div class="form-column col-md-12">
-
-
-
-                        <div class="form-group">
-                            <label>Apellidos</label>
-                            <input type="text" name="apellido" id="apellidosE" class="form-control"></input>
-                        </div>
-                    </div>
-
-                    <div class="form-column col-md-12">
-
-
-
-                        <div class="form-group">
-                            <label>Dirección</label>
-                            <input type="text" name="direccion" id="direccionE" class="form-control"></input>
-                        </div>
-                    </div>
-
-                    <div class="form-column col-md-12">
-
-
-
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" name="email" id="emailE" class="form-control"></input>
-                        </div>
-                    </div>
-
-                    <div class="form-column col-md-12">
-
-
-
-                        <div class="form-group">
-                            <label>Teléfono</label>
-                            <input type="text" name="telefono" id="telefonoE" class="form-control"></input>
-                        </div>
-                    </div>
-                    <button type="submit" name="btnEditar" class="btn btn-primary">Guardar Cambios</button>
-                </form>
-            </div>
-
-        </div>
+<div class="modal fade bd-example-modal-lg" id="modalInventario">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Inventario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div id="mostarTabla"></div>
+              <table width='100%' id='invent'>
+                  <thead>
+                  <th>Nombre</th>
+                  <th>Stock</th>
+                  <th>Precio</th>
+                  <th>Descripción</th>
+                  <th>Acción</th>
+              </thead>
+              <tbody>
+                  <?php 
+                    foreach($inventario as $row){
+                        echo ""
+                        . "<tr>"
+                                . "<td>$row->nombre</td>"
+                                . "<td>$row->stock</td>"
+                                . "<td>$row->precio</td>"
+                                . "<td>$row->descripcion</td>"
+                                . "<td><a class='btn btn-success btn-block agregar' id='$row->idInventario'><i class='fas fa-plus-circle'></i> Agregar</a></td>"
+                        . "</tr>";
+                    }
+                  ?>
+              </tbody>
+              <tfoot>
+                <th>Nombre</th>
+                <th>Stock</th>
+                <th>Precio</th>
+                <th>Descripción</th>
+                <th>Acción</th>
+                </tfoot>
+            </table>
+              
+              
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
     </div>
+  </div>
 </div>
 
