@@ -14,6 +14,7 @@ class Cliente extends CI_Controller
 
         parent::__construct();
         $this->load->helper("url");
+        $this->load->model("Cliente_M");
     }
 
     public function index(){
@@ -24,6 +25,60 @@ class Cliente extends CI_Controller
         $this->load->view("cliente/cliente_view");
         $this->load->view("layout/footer");
 
+    }
+
+    public function showClients(){
+        $result = $this->Cliente_M->getClients();
+        echo json_encode($result);
+    }
+
+    public function addClient(){
+        $data = array("idCliente"=>0,
+            "nombre"=>$_POST["nombre"],
+            "empresa"=>$_POST["empresa"],
+            "telefono"=>$_POST["telefono"],
+            "celular"=>$_POST["telefonoC"],
+            "correo"=>$_POST["email"],
+            "direccion"=>$_POST["direccion"],
+            "registroFiscal"=>$_POST["registroF"],
+            "nit"=>$_POST["nit"],
+            "borradoLogico"=>1
+
+        );
+
+        $res = $this->Cliente_M->saveClient($data);
+    }
+
+    public function updateClient(){
+        $result = $this->Cliente_M->editClient();
+        echo json_encode($result);
+    }
+
+    public function saveChanges(){
+        $id = $_POST["idCliente"];
+        $data = array(
+            "nombre"=>$_POST["nombreE"],
+            "empresa"=>$_POST["empresaE"],
+            "telefono"=>$_POST["telefonoE"],
+            "celular"=>$_POST["telefonoCE"],
+            "correo"=>$_POST["emailE"],
+            "direccion"=>$_POST["direccionE"],
+            "registroFiscal"=>$_POST["registroFE"],
+            "nit"=>$_POST["nitE"]
+
+        );
+        $result = $this->Cliente_M->updateClient($data,$id);
+        echo json_encode($result);
+    }
+
+    public function eraseClient(){
+        $id = $this->input->get('idCliente');
+        $data = array(
+            "borradoLogico"=>0,
+
+        );
+        $result = $this->Cliente_M->deleteClient($id, $data);
+        echo json_encode($result);
     }
 
 }

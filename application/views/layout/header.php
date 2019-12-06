@@ -34,6 +34,10 @@
     <!-- General Styles -->
     <link rel="stylesheet" href="<?php echo base_url("resources/css/style.css")?>">
 
+    <script type="text/javascript">
+        var BASE_URL = "<?php echo base_url();?>";
+    </script>
+
 
 </head>
 <body>

@@ -5,9 +5,9 @@
         <div class="full-box nav-lateral-content">
             <figure class="full-box nav-lateral-avatar">
                 <i class="far fa-times-circle show-nav-lateral"></i>
-                <img src="<?php echo base_url("resources/assets/avatar/Avatar.png")?>" class="img-fluid" alt="Avatar">
+                <img src="<?php echo base_url()?>resources/images/uploads/<?php echo $this->session->userdata("image")?>")?>" class="img-fluid" alt="Avatar">
                 <figcaption class="roboto-medium text-center">
-                    Carlos Alfaro <br><small class="roboto-condensed-light">Web Developer</small>
+                    <?php echo $this->session->userdata("nombre");?> <br><small class="roboto-condensed-light">  <?php echo $this->session->userdata("rol");?></small>
                 </figcaption>
             </figure>
             <div class="full-box nav-lateral-bar"></div>

@@ -7,17 +7,20 @@
  */
 
 defined("BASEPATH");
-class Dashboard extends CI_Controller
+include (APPPATH."controllers/Padre.php");
+class Dashboard extends Padre
 {
     public function __construct()
     {
 
         parent::__construct();
         $this->load->helper("url");
+
     }
 
     public function index(){
         $titulo="Dashboard";
+
         $this->load->view("layout/header");
         $this->load->view("layout/sidebar");
         $this->load->view("layout/navbar");

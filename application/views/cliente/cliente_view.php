@@ -17,46 +17,31 @@
 
     <table class="table table-bordered" width="100%" cellspacing="0" id="data">
         <thead style="font-weight: bold;">
+            <td>ID</td>
             <td>Nombre</td>
             <td>Empresa</td>
             <td>Telefono</td>
             <td>Celular</td>
             <td>Correo</td>
             <td>Dirección</td>
+            <td>NIT</td>
             <td>Registro Fiscal</td>
             <td>Opciones</td>
         </thead>
 
-        <tbody>
-            <tr>
-                <td>Juan Carlos Estrada Portillo</td>
-                <td>Fepade</td>
-                <td>7732-9443</td>
-                <td>2223-9128</td>
-                <td>juan.carlos@gmail.com</td>
-                <td>Antiguo Cuscatlan</td>
-                <td>Pendiente</td>
-                <td><button class="btn-success">Modificar</button></td>
-            </tr>
-            <tr>
-                <td>Rocío Alejandra Chicas Fortis</td>
-                <td>ITCA</td>
-                <td>2223-9128</td>
-                <td>7732-9443</td>
-                <td>rocio.chicas@gmail.com</td>
-                <td>Antiguo Cuscatlan</td>
-                <td>Pendiente</td>
-                <td><button class="btn-success">Modificar</button></td>
-            </tr>
+        <tbody id="table">
+
         </tbody>
 
         <tfoot>
+        <th>ID</th>
         <th>Nombre</th>
         <th>Empresa</th>
         <th>Telefono</th>
         <th>Celular</th>
         <th>Correo</th>
         <th>Dirección</th>
+        <th>NIT</th>
         <th>Registro Fiscal</th>
         <th>Opciones</th>
         </tfoot>
@@ -78,7 +63,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="cliente/saveCliente" method="post">
+                <form method="post" id="frmCliente">
 
                     <div class="form-column col-md-12">
 
@@ -86,7 +71,7 @@
 
                         <div class="form-group">
                             <label>Nombre de Cliente</label>
-                            <input type="text" name="nombre" id="nombres" class="form-control"></input>
+                            <input type="text" name="nombre" id="nombreId" class="form-control"></input>
                         </div>
                     </div>
 
@@ -96,7 +81,7 @@
 
                         <div class="form-group">
                             <label>Empresa perteneciente</label>
-                            <input type="text" name="apellido" id="apellidos" class="form-control"></input>
+                            <input type="text" name="empresa" id="empresaId" class="form-control"></input>
                         </div>
                     </div>
 
@@ -106,7 +91,7 @@
 
                         <div class="form-group">
                             <label>Teléfono Oficina</label>
-                            <input type="text" name="direccion" id="direccionI" class="form-control"></input>
+                            <input type="text" name="telefono" id="telefonoId" class="form-control"></input>
                         </div>
                     </div>
 
@@ -116,7 +101,7 @@
 
                         <div class="form-group">
                             <label>Teléfono Celular</label>
-                            <input type="text" name="email" id="emailI" class="form-control"></input>
+                            <input type="text" name="telefonoC" id="telefonoCId" class="form-control"></input>
                         </div>
                     </div>
 
@@ -126,7 +111,7 @@
 
                         <div class="form-group">
                             <label>Correo</label>
-                            <input type="text" name="email" id="emailI" class="form-control"></input>
+                            <input type="text" name="email" id="emailId" class="form-control"></input>
                         </div>
                     </div>
 
@@ -136,7 +121,17 @@
 
                         <div class="form-group">
                             <label>Dirección</label>
-                            <input type="text" name="email" id="emailI" class="form-control"></input>
+                            <input type="text" name="direccion" id="direccionId" class="form-control"></input>
+                        </div>
+                    </div>
+
+                    <div class="form-column col-md-12">
+
+
+
+                        <div class="form-group">
+                            <label>NIT</label>
+                            <input type="text" name="nit" id="nitId" class="form-control"></input>
                         </div>
                     </div>
 
@@ -146,10 +141,10 @@
 
                         <div class="form-group">
                             <label>Registro Fiscal</label>
-                            <input type="text" name="telefono" id="telefonoI" class="form-control"></input>
+                            <input type="text" name="registroF" id="registroFId" class="form-control"></input>
                         </div>
                     </div>
-                    <button type="submit" name="btnSave" class="btn btn-primary">Guardar Cliente</button>
+                    <button type="submit" name="btnSave" id="btnSaveId" class="btn btn-primary">Guardar Cliente</button>
                 </form>
             </div>
 
@@ -168,15 +163,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="cliente/updateCliente" method="post">
+                <form method="post" id="frmEditar">
 
                     <div class="form-column col-md-12">
 
-                        <input type="hidden" name="idCliente" id="idCliente" class="form-control"></input>
+
 
                         <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" name="nombre" id="nombresE" class="form-control"></input>
+                            <label>Nombre de Cliente</label>
+                            <input type="hidden" name="idCliente">
+                            <input type="text" name="nombreE" id="nombreIdE" class="form-control"></input>
+
                         </div>
                     </div>
 
@@ -185,8 +182,38 @@
 
 
                         <div class="form-group">
-                            <label>Apellidos</label>
-                            <input type="text" name="apellido" id="apellidosE" class="form-control"></input>
+                            <label>Empresa perteneciente</label>
+                            <input type="text" name="empresaE" id="empresaIdE" class="form-control"></input>
+                        </div>
+                    </div>
+
+                    <div class="form-column col-md-12">
+
+
+
+                        <div class="form-group">
+                            <label>Teléfono Oficina</label>
+                            <input type="text" name="telefonoE" id="telefonoIdE" class="form-control"></input>
+                        </div>
+                    </div>
+
+                    <div class="form-column col-md-12">
+
+
+
+                        <div class="form-group">
+                            <label>Teléfono Celular</label>
+                            <input type="text" name="telefonoCE" id="telefonoCEId" class="form-control"></input>
+                        </div>
+                    </div>
+
+                    <div class="form-column col-md-12">
+
+
+
+                        <div class="form-group">
+                            <label>Correo</label>
+                            <input type="text" name="emailE" id="emailIdE" class="form-control"></input>
                         </div>
                     </div>
 
@@ -196,7 +223,7 @@
 
                         <div class="form-group">
                             <label>Dirección</label>
-                            <input type="text" name="direccion" id="direccionE" class="form-control"></input>
+                            <input type="text" name="direccionE" id="direccionIdE" class="form-control"></input>
                         </div>
                     </div>
 
@@ -205,8 +232,8 @@
 
 
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" name="email" id="emailE" class="form-control"></input>
+                            <label>NIT</label>
+                            <input type="text" name="nitE" id="nitIdE" class="form-control"></input>
                         </div>
                     </div>
 
@@ -215,11 +242,11 @@
 
 
                         <div class="form-group">
-                            <label>Teléfono</label>
-                            <input type="text" name="telefono" id="telefonoE" class="form-control"></input>
+                            <label>Registro Fiscal</label>
+                            <input type="text" name="registroFE" id="registroFIdE" class="form-control"></input>
                         </div>
                     </div>
-                    <button type="submit" name="btnEditar" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="submit" name="btnEditar" id="btnEditId" class="btn btn-primary">Guardar Cambios</button>
                 </form>
             </div>
 
@@ -227,3 +254,31 @@
     </div>
 </div>
 
+
+<!--Modal Delete-->
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmar Eliminación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="formCliente">
+
+
+                    <div class="form-column col-md-12">
+
+                        ¿Eliminar este registro?
+                    </div>
+
+                    <button type="submit" id="btnDeleteId" name="btnDelete" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
