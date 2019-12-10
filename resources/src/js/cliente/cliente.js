@@ -1,8 +1,12 @@
 $(document).ready(function () {
 
 
-    showClients();
 
+
+
+
+    showClients();
+    $('#data').DataTable();
     $(document).on("click", "#agregarCliente", function () {
         $("#frmInsertarCliente").modal("show");
     })});
@@ -21,6 +25,7 @@ $(document).on('click','#btnSaveId',function(){
             $("#frmInsertarCliente").modal("hide");
             $('#frmCliente')[0].reset();
             showClients();
+            alert("Cliente Agregado con éxito");
 
         })
         .fail(function() {
@@ -28,6 +33,9 @@ $(document).on('click','#btnSaveId',function(){
         });
 
 });
+
+
+
 
 
 
@@ -76,6 +84,7 @@ $(document).on('click','#btnEditId',function(){
             $("#frmEditarCliente").modal("hide");
             $('#frmEditar')[0].reset();
             showClients();
+            alert("Cliente modificado con éxito");
 
         })
         .fail(function() {
@@ -104,6 +113,7 @@ $(document).on('click','#eliminar',function(){
             success:function (response) {
                 $("#deleteModal").modal("hide");
                 showClients();
+                alert("Cliente eliminado con éxito");
             },
             error:function () {
                 alert('Error al eliminar');

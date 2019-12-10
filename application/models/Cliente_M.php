@@ -14,7 +14,10 @@ class Cliente_M extends CI_Model
     }
 
     public function getClients(){
-        $query = $this->db->get('cliente');
+        $this->db->select('*');
+        $this->db->from('cliente');
+        $this->db->where('borradoLogico!=',0);
+        $query = $this->db->get();
 
         if ($query->num_rows()>0){
             return $query->result();

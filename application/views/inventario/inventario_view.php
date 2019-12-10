@@ -46,7 +46,7 @@
         foreach ($inventario as $row){
             echo "
                    <tr>
-                   <td>$row->nombreInv</td>
+                   <td>$row->nombre</td>
                    <td>$row->precio</td>
                    <td>$row->stock</td>
                    <td>$row->descripcion</td>
@@ -98,7 +98,7 @@
                                         +<option>Seleccione el Proveedor...</option>
                                         <?php
                                             foreach ($proveedor as $row){
-                                                echo "<option id='$row->idProveedor'> $row->nombre </option>";
+                                                echo "<option id='$row->idProveedor'> $row->nombreInv </option>";
 
                                             }
                                             ?>

@@ -15,7 +15,10 @@ class Usuario_M extends CI_Model
     }
 
     public function getUsers(){
-        $query = $this->db->get('usuari0');
+        $this->db->select('*');
+        $this->db->from('usuario');
+        $this->db->where('borradoLogico!=',0);
+        $query = $this->db->get();
 
         if ($query->num_rows()>0){
             return $query->result();
@@ -26,14 +29,14 @@ class Usuario_M extends CI_Model
     }
 
     public function saveUser($data){
-        $this->db->insert('usuari0', $data);
+        $this->db->insert('usuario', $data);
         return $this->db->insert_id();
     }
 
     public function editUser(){
         $id = $this->input->get("idUser");
         $this->db->where('idUser',$id);
-        $query = $this->db->get('usuari0');
+        $query = $this->db->get('usuario');
         if ($query->num_rows()>0){
             return $query->row();
         }
@@ -45,7 +48,7 @@ class Usuario_M extends CI_Model
     public function captureImage($id){
         $this->db->select("image");
         $this->db->where("idUser",$id);
-        $this->db->from("usuari0");
+        $this->db->from("usuario");
         $result = $this->db->get();
         return $result->row();
     }
@@ -53,7 +56,7 @@ class Usuario_M extends CI_Model
     public function updateUser($data,$id){
 
         $this->db->where('idUser',$id);
-        $this->db->update('usuari0',$data);
+        $this->db->update('usuario',$data);
         if($this->db->affected_rows()>0){
             return true;
         }
@@ -62,7 +65,7 @@ class Usuario_M extends CI_Model
 
     public function deleteUser($id, $data){
         $this->db->where('idUser',$id);
-        $this->db->update('usuari0',$data);
+        $this->db->update('usuario',$data);
         if ($this->db->affected_rows()>0){
             return true;
         }

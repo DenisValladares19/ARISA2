@@ -8,7 +8,7 @@
 
 class Login_m extends CI_Model
 {
-    private $table="usuari0";
+    private $table="usuario";
     public function __construct()
     {
 
@@ -18,7 +18,8 @@ class Login_m extends CI_Model
     public function getLogin($user, $pass){
         $newPass = sha1($pass);
         $this->db->select("Count(u.idUser) as login, u.idUser, u.nombre as username,u.image, r.nombre");
-        $this->db->from("usuari0 u");
+        $this->db->from("usuario u");
+        $this->db->where('u.borradoLogico!=',0);
         $this->db->join("rol r", "u.idRol = r.idRol ");
         $this->db->where("u.nombre",$user);
         $this->db->where("u.pass", $newPass);

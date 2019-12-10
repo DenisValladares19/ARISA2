@@ -51,7 +51,7 @@
         foreach ($proveedor as $row){
             echo "
                     <tr>
-                    <td>$row->nombre</td>
+                    <td>$row->nombreInv</td>
                     <td>$row->empresa</td>
                     <td>$row->direccion</td>
                     <td>$row->correo</td>

@@ -2,7 +2,7 @@ $(document).ready(function () {
 
 
     showRoles();
-
+    $('#data').DataTable();
 
 
 });
@@ -26,6 +26,7 @@ $(document).on('click','#btnSaveId',function(){
             $("#frmInsertarCliente").modal("hide");
             $('#formRol')[0].reset();
             showRoles();
+            alert("Rol agregado con éxito");
 
         })
         .fail(function() {
@@ -70,6 +71,7 @@ $(document).on('click','#btnEditId',function(){
             $("#frmEditarRol").modal("hide");
             $('#editFormRol')[0].reset();
             showRoles();
+            alert("Rol modificado con éxito");
 
         })
         .fail(function() {
@@ -99,6 +101,7 @@ $(document).on('click','#eliminar',function(){
             success:function (response) {
                 $("#deleteModal").modal("hide");
                 showRoles();
+                alert("Rol eliminado con éxito");
             },
             error:function () {
                 alert('Error al eliminar');
@@ -137,3 +140,5 @@ function showRoles() {
 
     });
 }
+
+

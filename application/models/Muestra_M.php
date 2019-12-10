@@ -15,7 +15,10 @@ class Muestra_M extends CI_Model
     }
 
     public function getSamples(){
-        $query = $this->db->get('muestra');
+        $this->db->select('*');
+        $this->db->from('muestra');
+        $this->db->where('borradoLogico!=',0);
+        $query = $this->db->get();
 
         if ($query->num_rows()>0){
             return $query->result();

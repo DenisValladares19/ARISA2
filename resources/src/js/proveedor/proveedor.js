@@ -18,7 +18,7 @@ $(document).ready(function () {
 
                 var datos = JSON.parse(data);
                 $("#idProveedor").val(datos[0].idProveedor);
-                $("#txtNombreE").val(datos[0].nombre);
+                $("#txtNombreE").val(datos[0].nombreInv);
                 $("#txtEmpresaE").val(datos[0].empresa);
                 $("#txtDireccionE").val(datos[0].direccion);
                 $("#txtCorreoE").val(datos[0].correo);

@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     showSamples();
-
+    $('#data').DataTable();
     $(document).on("click", "#agregarCliente", function () {
         $("#frmInsertarCliente").modal("show");
     })});
@@ -25,6 +25,7 @@ $(document).on('click','#btnSaveSampleId',function(){
             $("#frmInsertarCliente").modal("hide");
             $('#frmSampleId')[0].reset();
             showSamples();
+            alert("Muestra agregada con éxito");
 
         })
         .fail(function() {
@@ -75,6 +76,7 @@ $(document).on('click','#btnEditSampleId',function(){
             $("#frmEditarMuestra").modal("hide");
             $('#frmSampleIdEdit')[0].reset();
             showSamples();
+            alert("Muestra modificada con éxito");
 
         })
         .fail(function() {
@@ -104,6 +106,7 @@ $(document).on('click','#eliminar',function(){
             success:function (response) {
                 $("#deleteModal").modal("hide");
                 showSamples();
+                alert("Muestra eliminada con éxito");
             },
             error:function () {
                 alert('Error al eliminar');

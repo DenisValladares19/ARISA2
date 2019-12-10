@@ -15,7 +15,10 @@ class Rol_M extends CI_Model
     }
 
     public function getRoles(){
-        $query = $this->db->get('rol');
+        $this->db->select('*');
+        $this->db->from('rol');
+        $this->db->where('borradoLogico!=',0);
+        $query = $this->db->get();
 
         if ($query->num_rows()>0){
             return $query->result();

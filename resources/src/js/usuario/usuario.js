@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     showUsers();
+    $('#data').DataTable();
     $(document).on("click", "#agregarCliente", function () {
         $("#frmInsertarCliente").modal("show");
     })});
@@ -107,7 +108,8 @@ $(document).on('click','#eliminar',function(){
                 showUsers();
             },
             error:function () {
-                alert('Error al eliminar');
+                $("#deleteModal").modal("hide");
+                showUsers();
             }
         })
     })

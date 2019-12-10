@@ -73,10 +73,11 @@ class Usuario extends CI_Controller
             $registro = $this->Usuario_M->captureImage($id);
             unlink("./resources/images/uploads/".$registro->image);
             $datos= array("upload_data"=> $this->upload->data());
+            $newPass = sha1($_POST["passE"]);
             $data = array(
                 "nombre"=>$_POST["nombreE"],
                 "correo"=>$_POST["emailE"],
-                "pass"=>$_POST["passE"],
+                "pass"=>$newPass,
                 "idRol"=>$_POST["rolE"],
                 "image"=> $datos["upload_data"]["file_name"]
             );

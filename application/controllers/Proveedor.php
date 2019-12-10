@@ -32,7 +32,7 @@ class Proveedor  extends CI_Controller
     public function insertar(){
         $data = array(
             'idProveedor'=>0,
-            'nombre'=>$this->input->post("txtNombre"),
+            'nombreInv'=>$this->input->post("txtNombre"),
             'empresa'=>$this->input->post("txtEmpresa"),
             'direccion'=>$this->input->post("txtDireccion"),
             'correo'=>$this->input->post("txtCorreo"),
@@ -60,7 +60,7 @@ class Proveedor  extends CI_Controller
 
     public function modificar(){
         $data = array(
-            'nombre'=>$this->input->post("txtNombre"),
+            'nombreInv'=>$this->input->post("txtNombre"),
             'empresa'=>$this->input->post("txtEmpresa"),
             'direccion'=>$this->input->post("txtDireccion"),
             'correo'=>$this->input->post("txtCorreo"),
