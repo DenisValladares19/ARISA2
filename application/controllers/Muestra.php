@@ -36,7 +36,7 @@ class Muestra extends Padre_Vendedor
 
     public function addSample(){
 
-        $config = array("upload_path"=> "./resources/files/uploads", "allowed_types"=>"docx|pdf");
+        $config = array("upload_path"=> "./resources/files/uploads", "allowed_types"=>"docx|pdf|png|jpg");
         $this->load->library("upload",$config);
         if ($this->upload->do_upload("muestra")){
             $datos= array("upload_data"=> $this->upload->data());
@@ -65,7 +65,7 @@ class Muestra extends Padre_Vendedor
     public function saveChanges(){
         $data = null;
         $id = $this->input->post('txtId');
-        $config = array("upload_path"=> "./resources/files/uploads", "allowed_types"=>"pdf|docx");
+        $config = array("upload_path"=> "./resources/files/uploads", "allowed_types"=>"pdf|docx|png|jpg");
         $this->load->library("upload",$config);
 
         if ($this->upload->do_upload("muestraE")){
