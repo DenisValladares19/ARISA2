@@ -93,6 +93,17 @@
                             <input type="text" name="coment" id="comentId" class="form-control"></input>
                         </div>
                     </div>
+
+                    <div class="form-column col-md-12">
+
+
+
+                        <div class="form-group">
+                            <label>Fecha de Expedición</label>
+                            <input type="date" name="fecha" id="fechaId" class="form-control"></input>
+                        </div>
+                    </div>
+
                     <button type="submit" name="btnSave" id="btnSaveSampleId" class="btn btn-primary">Guardar Muestra</button>
                 </form>
             </div>

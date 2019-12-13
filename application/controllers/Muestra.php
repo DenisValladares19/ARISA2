@@ -40,9 +40,11 @@ class Muestra extends Padre_Vendedor
         $this->load->library("upload",$config);
         if ($this->upload->do_upload("muestra")){
             $datos= array("upload_data"=> $this->upload->data());
+            $newDate = date("Y-m-d",strtotime($_POST['fecha']));
             $data = array("idMuestra"=>0,
                 "idEstado1"=>$_POST["estado"],
                 "comentarios"=>$_POST["coment"],
+                "fecha"=>$newDate,
                 "borradoLogico"=>1,
                 "url"=> $datos["upload_data"]["file_name"]
 
