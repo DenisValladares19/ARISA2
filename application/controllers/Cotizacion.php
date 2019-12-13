@@ -7,7 +7,8 @@
  * Time: 20:14
  */
 
-class Cotizacion extends CI_Controller
+include (APPPATH."controllers/Padre_Desing.php");
+class Cotizacion extends Padre_Desing
 {
 
     public function __construct()

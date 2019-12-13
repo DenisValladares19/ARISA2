@@ -7,7 +7,8 @@
  */
 
 defined("BASEPATH");
-class Rol extends CI_Controller
+include (APPPATH."controllers/New_Padre.php");
+class Rol extends New_Padre
 {
 
     public function __construct()

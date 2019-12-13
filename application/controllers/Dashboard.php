@@ -18,6 +18,7 @@ class Dashboard extends Padre
 
     }
 
+
     public function index(){
         $titulo="Dashboard";
 

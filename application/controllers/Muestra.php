@@ -6,7 +6,8 @@
  * Time: 20:45
  */
 
-class Muestra extends CI_Controller
+include (APPPATH."controllers/Padre_Vendedor.php");
+class Muestra extends Padre_Vendedor
 {
 
     public function __construct()

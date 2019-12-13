@@ -6,8 +6,10 @@
  * Time: 08:42 PM
  */
 
-class Inventario extends CI_Controller
+include (APPPATH."controllers/Padre_Session.php");
+class Inventario extends Padre_Session
 {
+
     public function __construct()
     {
 

@@ -4,7 +4,8 @@
  *
  * @author Admin
  */
-class orden extends CI_Controller {
+include (APPPATH."controllers/Padre_Desing.php");
+class orden extends Padre_Desing {
     
     public function __construct() {
         parent::__construct();

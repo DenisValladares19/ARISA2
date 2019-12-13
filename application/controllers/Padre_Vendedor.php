@@ -2,20 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: JC
- * Date: 28/11/2019
- * Time: 16:22
+ * Date: 12/12/2019
+ * Time: 16:53
  */
 
-class Padre extends CI_Controller
+class Padre_Vendedor extends CI_Controller
 {
-
 
     public function __construct()
     {
         parent::__construct();
         $this->load->helper("url");
         $this->load->driver("cache",array("adapter"=>"apc", "backup"=>"file"));
-        //$rol = $this->session->userdata('rol');
+        $rol = $this->session->userdata('rol');
 
         if ($this->session){
             $logged = $this->session->has_userdata("logged_in");
@@ -28,6 +27,12 @@ class Padre extends CI_Controller
         else{
             header("Location:".site_url("Login"));
         }
+
+        if ($rol=='Vendedor'){
+            header("Location:".site_url("Dashboard"));
+        }
+
+
 
 
     }

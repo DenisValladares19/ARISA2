@@ -6,8 +6,10 @@
  * Time: 20:51
  */
 
+
 defined("BASEPATH");
-class Usuario extends CI_Controller
+include (APPPATH."controllers/Padre_Session.php");
+class Usuario extends Padre_Session
 {
 
     public function __construct()

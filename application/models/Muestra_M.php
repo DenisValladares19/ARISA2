@@ -15,9 +15,11 @@ class Muestra_M extends CI_Model
     }
 
     public function getSamples(){
-        $this->db->select('*');
-        $this->db->from('muestra');
-        $this->db->where('borradoLogico!=',0);
+        $this->db->select('m.*,e.nombre');
+        $this->db->from('muestra m');
+        $this->db->join("estado1 e","m.idEstado1 = e.idEstado1");
+        $this->db->where('m.borradoLogico!=',0);
+
         $query = $this->db->get();
 
         if ($query->num_rows()>0){

@@ -154,7 +154,7 @@ function showSamples() {
             for(i=0; i<data.length; i++){
                 html+='<tr>'+
                     '<td>'+data[i].idMuestra+'</td>'+
-                    '<td>'+data[i].idEstado1+'</td>'+
+                    '<td>'+data[i].nombre+'</td>'+
                     '<td>'+data[i].url+'</td>'+
                     '<td>'+data[i].comentarios+'</td>'+
                     '<td>'+

@@ -5,8 +5,8 @@
  * Date: 22/11/2019
  * Time: 02:23 AM
  */
-
-class Orden_Trabajar extends CI_Controller
+include (APPPATH."controllers/Padre_Desing.php");
+class Orden_Trabajar extends Padre_Desing
 {
     public function __construct()
     {

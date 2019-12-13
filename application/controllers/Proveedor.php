@@ -6,7 +6,8 @@
  * Time: 11:47 PM
  */
 
-class Proveedor  extends CI_Controller
+include (APPPATH."controllers/Padre_Desing.php");
+class Proveedor  extends Padre_Desing
 {
     public function __construct()
     {

@@ -6,7 +6,8 @@
  * Time: 01:32 AM
  */
 
-class Lista_Orden extends CI_Controller
+include (APPPATH."controllers/New_Padre.php");
+class Lista_Orden extends New_Padre
 {
     public function __construct()
     {
