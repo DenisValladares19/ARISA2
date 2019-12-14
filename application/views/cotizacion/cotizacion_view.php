@@ -75,7 +75,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="frmInsertarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Insertar</h5>
@@ -86,55 +86,60 @@
             <div class="modal-body">
                 <form method="post" id="formModal">
                     <div class="row">
-                    <div class="form-column col-md-6">
-                       <div class="form-group">
-                           <label>Nombre de Cliente</label>
-                           <select name="cliente" id="clienteI" class="form-control"><option>Seleccionar</option></select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Fecha</label>
-                            <input type="text" name="fecha" id="fechaI" class="form-control"></input>
-                        </div>
-
-                        <div class="form-group">
-                            <br>
-                            <a href="#" name="materiales" id="material" class="btn btn-primary btn-block">Material</a>
+                        <div class="form-column col-md-6">
+                           <div class="form-group">
+                               <label>Nombre de Cliente</label>
+                               <select name="cliente" id="clienteI" class="form-control-lg"><option>Seleccionar</option></select>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="form-column col-md-6">
-
-
-
-                         <div class="form-group">
-                            <label>Tipo de Impresión</label>
-                            <select name="tipoImpresion" id="tipoI" class="form-control"><option>Seleccionar</option></select>
+                    <div class="row">  
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Fecha</label>
+                                <input type="text" name="fecha" id="fechaI" class="form-control"></input>
+                            </div>
                         </div>
-                   
-                        <div class="form-group">
-                            <label>Descripción</label>
-                            <textarea name="des" id="desI" class="form-control" autocomplete="off"></textarea>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Tipo de Impresión</label>
+                                <select name="tipoImprecion" id="tipoI" class="form-control"><option>Seleccionar</option></select>
+                            </div>
                         </div>
-                    
-                        <div class="form-group">
-                            <label>Estado</label>
-                            <select name="estado" id="estadoI" class="form-control"><option>Seleccionar</option></select>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Estado</label>
+                                <select name="estado" id="estadoI" class="form-control"><option>Seleccionar</option></select>
+                            </div>
                         </div>
                     </div>
+                </form>
+                <form id="frmDesc">
+                    <div class="row">
+                            
+                        <div class="col-md-12"><br>
+                            <a id="addDes" class="btn btn-success">Agregar descripcion</a>
+                        </div>
+                    </div>
+                    <div class="row" id='divDesc'>
+                    <div class='col-md-4'><input type='text' name='desc' class='form-control' placeholder='Descripción'/></div>
+                    <div class='col-md-2'><input type='text' name='cant' id='cantI' class='form-control' placeholder='Cantidad'/></div>
+                    <div class='col-md-2'><input type='text' name='uni' class='form-control' placeholder='Unidad'/></div>
+                    <div class='col-md-2'><input type='text' name='precio' id='Precio' class="form-control" placeholder="precio"/></div>
+                    <div class='col-md-2'><input type='text' name='total' id='totalI' class='form-control' placeholder='total'/></div>
                     </div>
                     <button type="submit" name="btnSave" id="btnGuardar" class="btn btn-primary">Guardar Cotización</button>
                 </form>
+              </div>
             </div>
 
         </div>
     </div>
-</div>
 
 
 <!-- Modal para mostrar el inventario -->
 
-<div class="modal fade bd-example-modal-lg" id="modalInventario">
+<div class="modal fade bd-example-modal-lg" id="modalAdd">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
     <div class="modal-header">
@@ -144,44 +149,14 @@
         </button>
       </div>
       <div class="modal-body">
-          <div id="mostarTabla"></div>
-              <table width='100%' id='invent'>
-                  <thead>
-                  <th>Nombre</th>
-                  <th>Stock</th>
-                  <th>Precio</th>
-                  <th>Descripción</th>
-                  <th>Acción</th>
-              </thead>
-              <tbody>
-                  <?php 
-                    foreach($inventario as $row){
-                        echo ""
-                        . "<tr>"
-                                . "<td>$row->nombre</td>"
-                                . "<td>$row->stock</td>"
-                                . "<td>$row->precio</td>"
-                                . "<td>$row->descripcion</td>"
-                                . "<td><a class='btn btn-success btn-block agregar' id='$row->idInventario'><i class='fas fa-plus-circle'></i> Agregar</a></td>"
-                        . "</tr>";
-                    }
-                  ?>
-              </tbody>
-              <tfoot>
-                <th>Nombre</th>
-                <th>Stock</th>
-                <th>Precio</th>
-                <th>Descripción</th>
-                <th>Acción</th>
-                </tfoot>
-            </table>
+          <a id="addDes" class="btn btn-success">Agregar Descripcion</a>    
+          <form name="frmPrueba" method="POST">
               
-              
-          
+          </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>

@@ -27,17 +27,11 @@ $(document).ready(function () {
     });
     
     
-    $(".agregar").click(function(e){
-       e.preventDefault();
-       let id = $(this).attr("id");
-       $.post("cotizacion/newMaterial",
-       {id}, 
-       function(res){
-           console.log(res);
-       });
-    });
     
-    //$("#clienteI").select2();
+    
+    $("#clienteI").select2({
+        width: "100%"
+    });
     //Tabla Cotizacion
     $('#data').DataTable({
         language: {
@@ -62,11 +56,7 @@ $(document).ready(function () {
         }
     });
     
-    
-    $("#material").click(function(e){
-       e.preventDefault();
-       $("#modalInventario").modal("show");
-    });
+    $("#divDesc").hide("true");
     
     llenarEstado();
     llenarCLientes();
@@ -95,7 +85,22 @@ $(document).ready(function () {
             }
         }
     });
+    let a = 0;
+    $("#addDes").click(function(){
+        let form = $("#formModal").serialize();
+        
+        if(a<=0){
+            $.post("cotizacion/insertarCotizacion",{
+            form
+            },function(res){
+                console.log(res);
+            });
+          $("#divDesc").show("true");
+        }
+        a++;
+    });
     
+   
 });
 
 
@@ -124,4 +129,8 @@ function llenarTipo(){
             $("#tipoI").append("<option value='"+r[i].idTipoImpresion+"'>"+r[i].nombre+" </option>");
         }       
     });
+}
+
+function llenarDescripcion(){
+    
 }

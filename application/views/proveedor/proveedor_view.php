@@ -1,4 +1,5 @@
 
+    <link rel="stylesheet" href="<?php echo base_url("resources/modal/css/component.css")?>">
     <script src="<?php echo base_url("resources/src/js/proveedor/proveedor.js")?>"></script>
 <body>
 <div class="full-box page-header">
@@ -47,35 +48,9 @@
             <th>Acciones</th>
         </tfoot>
         <tbody>
-        <?php
-        foreach ($proveedor as $row){
-            echo "
-                    <tr>
-                    <td>$row->nombreInv</td>
-                    <td>$row->empresa</td>
-                    <td>$row->direccion</td>
-                    <td>$row->correo</td>
-                    <td>$row->telefono</td>
-                    <td>$row->celular</td>
-                    <td>$row->nit</td>
-                    <td>$row->dui</td>
-                    <td>$row->registroFiscal</td>
-                    <td> <a class=\"btn btn-outline-info btnEditar\" id='$row->idProveedor'><i class=\"fas fa-marker\"></i></a>
-                     <a class=\"btn btn-outline-danger btnEliminar\" id='$row->idProveedor' ><i class=\"far fa-trash-alt\"></i></a>
-                    </td>
-                ";
-        }
-        ?>
         </tbody>
     </table>
-
-
-
-
-
-
 </div>
-
 
 
 <!-- modal Insertar -->
@@ -94,48 +69,75 @@
                 <form action="Proveedor/insertar" method="post">
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <input type="text" name="txtNombre" placeholder="Nombre..." class="form-control" required="true">
+                            <div class="form-group">
+                                <label>Nombre del Proveedor</label>
+                                <input type="text" name="txtNombre" placeholder="Nombre..." class="form-control" required="true">
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <input type="tel" name="txtEmpresa" class="form-control" placeholder="Empresa..." required="true">
+                            <div class="form-group">
+                                <label>Nombre de la Empresa</label>
+                                <input type="tel" name="txtEmpresa" class="form-control" placeholder="Empresa..." required="true">
+                            </div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-12">
-                            <input type="email" name="txtCorreo" placeholder="E-mail" class="form-control" required="true">
+                            <div class="form-group">
+                                <label>E-Mail</label>
+                                <input type="email" name="txtCorreo" placeholder="E-mail" class="form-control" required="true">
+                            </div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-12">
-                            <input type="textar" name="txtDireccion" placeholder="Direccion..." class="form-control" required="true">
+                            <div class="form-group">
+                                <label>Direccion</label>
+                                <input type="textar" name="txtDireccion" placeholder="Direccion..." class="form-control" required="true">
+                            </div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <input type="tel" name="txtTelefono" class="form-control" placeholder="Telefono..." required="true">
+                            <div class="form-group">
+                                <label>Telefono</label>
+                                <input type="tel" name="txtTelefono" class="form-control" placeholder="Telefono..." required="true">
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <input type="tel" name="txtCelular" class="form-control" placeholder="Celular..." required="true">
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">
-                            <input type="tel" name="txtNit" class="form-control" placeholder="NIT..." required="true">
-                        </div>
-                        <div class="col-md-6">
-                            <input type="tel" name="txtDui" class="form-control" placeholder="DUI..." required="true">
+                            <div class="form-group">
+                                <label>Celular</label>
+                                <input type="tel" name="txtCelular" class="form-control" placeholder="Celular..." required="true">
+                            </div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <input type="tel" name="txtRegistro" class="form-control" placeholder="Registro Fiscal..." required="true">
+                            <div class="form-group">
+                                <label>NIT</label>
+                                <input type="tel" name="txtNit" class="form-control" placeholder="NIT..." required="true">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>DUI</label>
+                                <input type="tel" name="txtDui" class="form-control" placeholder="DUI..." required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>N° Registro Fiscal</label>
+                                <input type="tel" name="txtRegistro" class="form-control" placeholder="Registro Fiscal..." required="true">
+                            </div>
                         </div>
                     </div>
 
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-success">Guardar</button>
+                <button type="submit" class="btn btn-success btnGuardar">Guardar</button>
             </div>
             </form>
         </div>
@@ -164,41 +166,68 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <input type="text" name="txtNombre" id="txtNombreE" placeholder="Nombre..." class="form-control" required="true">
+                            <div class="form-group">
+                                <label>Nombre del Proveedor</label>
+                                <input type="text" name="txtNombre" id="txtNombreE" placeholder="Nombre..." class="form-control" required="true">
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <input type="tel" name="txtEmpresa" id="txtEmpresaE" class="form-control" placeholder="Empresa..." required="true">
+                            <div class="form-group">
+                                <label>Nombre de la Empresa</label>
+                                <input type="tel" name="txtEmpresa" id="txtEmpresaE" class="form-control" placeholder="Empresa..." required="true">
+                            </div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-12">
-                            <input type="email" name="txtCorreo" id="txtCorreoE" placeholder="E-mail" class="form-control" required="true">
+                            <div class="form-group">
+                                <label>E-Mail</label>
+                                <input type="email" name="txtCorreo"  id="txtCorreoE" placeholder="E-mail" class="form-control" required="true">
+                            </div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-12">
-                            <input type="textar" name="txtDireccion" id="txtDireccionE" placeholder="Direccion..." class="form-control" required="true">
+                            <div class="form-group">
+                                <label>Direccion</label>
+                                <input type="textar" name="txtDireccion"  id="txtDireccionE" placeholder="Direccion..." class="form-control" required="true">
+                            </div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <input type="tel" name="txtTelefono" id="txtTelefonoE" class="form-control" placeholder="Telefono..." required="true">
+                            <div class="form-group">
+                                <label>Telefono</label>
+                                <input type="tel" name="txtTelefono"  id="txtTelefonoE" class="form-control" placeholder="Telefono..." required="true">
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <input type="tel" name="txtCelular" id="txtCelularE" class="form-control" placeholder="Celular..." required="true">
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">
-                            <input type="tel" name="txtNit" id="txtNitE" class="form-control" placeholder="NIT..." required="true">
-                        </div>
-                        <div class="col-md-6">
-                            <input type="tel" name="txtDui" id="txtDuiE" class="form-control" placeholder="DUI..." required="true">
+                            <div class="form-group">
+                                <label>Celular</label>
+                                <input type="tel" name="txtCelular"  id="txtCelularE" class="form-control" placeholder="Celular..." required="true">
+                            </div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <input type="tel"  name="txtRegistro" id="txtRegistroE" class="form-control" placeholder="Registro Fiscal..." required="true">
+                            <div class="form-group">
+                                <label>NIT</label>
+                                <input type="tel" name="txtNit" id="txtNitE" class="form-control" placeholder="NIT..." required="true">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>DUI</label>
+                                <input type="tel" name="txtDui" id="txtDuiE" class="form-control" placeholder="DUI..." required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>N° Registro Fiscal</label>
+                                <input type="tel" name="txtRegistro" id="txtRegistroE" class="form-control" placeholder="Registro Fiscal..." required="true">
+                            </div>
                         </div>
                     </div>
 
@@ -211,6 +240,39 @@
         </div>
     </div>
 </div>
+
+<div class="md-modal md-effect-13" id="modal-13">
+    <div class="md-content">
+        <h3>Restaurar Información de Proveedor</h3>
+        <div>
+            <table class="table table-bordered" width="100%" cellspacing="0" id="dataProveedorRest">
+                <thead style="background-color: rgba(11, 23, 41 , 0.6);">
+                <th>Nombre</th>
+                <th>Empresa</th>
+                <th>Direccion</th>
+                <th>E-Mail</th>
+                <th>N° Registro Fiscal</th>
+                <th>Acciones</th>
+                </thead>
+                <tfoot>
+                <th>Nombre</th>
+                <th>Empresa</th>
+                <th>Direccion</th>
+                <th>E-Mail</th>
+                <th>N° Registro Fiscal</th>
+                <th>Acciones</th>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="column">
+    <button class="btn btn-outline-secondary" data-modal="modal-13" id="rest">Restaurar Info. Proveedor</button>
+</div>
+<div class="md-overlay"></div><!-- the overlay element -->
+<script src="<?php echo base_url("resources/modal/js/classie.js")?>"></script>
+<script src="<?php echo base_url("resources/modal/js/modalEffects.js")?>"></script>
 
 </section>
 </body>

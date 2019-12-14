@@ -28,7 +28,7 @@ class Padre_Session extends CI_Controller
             header("Location:".site_url("Login"));
         }
 
-        if ($rol=='Vendedor' || $rol='Diseñador'){
+        if ($rol=='Vendedor' || $rol=='Diseñador'){
             header("Location:".site_url("Dashboard"));
         }
 
